@@ -96,10 +96,8 @@ const Manager = () => {
 
     }
     const editPassword = (id) => {
-        console.log("Editing password with id ", id);
-        const passwordToEdit = passwordArray.find(i => i.id === id);
-        setform(passwordToEdit); // ✅ Load data into the form
-        setEditId(id); 
+        setform({ ...passwordArray.filter(i => i.id === id)[0], id: id })
+        setPasswordArray(passwordArray.filter(item => item.id !== id)) 
     }
     const handleChange = (e) => {
         setform({ ...form, [e.target.name]: e.target.value })
